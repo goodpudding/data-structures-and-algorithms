@@ -28,6 +28,7 @@ const typeNum = (arr) => {
     return typeof idx === "number";
   });
   return newArr;
+  //return arr.filter(element => typeof element === 'number');
 };
 
 /* ------------------------------------------------------------------------------------------------

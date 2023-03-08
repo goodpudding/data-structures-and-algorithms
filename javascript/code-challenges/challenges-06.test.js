@@ -30,6 +30,8 @@ return reversed;};
 
 const getNames = (arr) => {
   // let name = arr.name.split('');
+
+  // return arr.map(person => person.name.split('').reverse().join(''));
   return arr.map(name => {
     let names = name.name.split('');
     let reverseName = names.reverse();

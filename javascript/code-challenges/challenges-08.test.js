@@ -118,10 +118,9 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  let newArr = [];
-  let regex =/([[:upper:]])\w+/g;
-  newArr.push(regex);
-  return newArr;
+  let regex = /\b[A-Z]\w*/gm;
+  let newArr = str.match(regex);
+  return newArr || [];
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -130,11 +129,8 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  let newArr = [];
-  let regex = /(^)[A-J]\w+/;
-  newArr.push(regex);
-  console.log(newArr);
-  return newArr;
+  let regex =  /^[A-J]/;
+  return arr.filter(city => regex.test(city) )
 
 };
 

@@ -9,7 +9,8 @@ using the 'reduce' method.
 E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
-  // Solution code here...
+
+  return arr.reduce((a,b)=> Math.max(a,b));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -37,7 +38,7 @@ Write a function named checkValues that takes in an object and a value and retur
 ------------------------------------------------------------------------------------------------ */
 
 const checkValues = (obj, value) => {
-  // Solution code here...
+  return Object.values(obj).includes(value);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,7 +61,7 @@ HR has asked you to change the data to make it easier to print so that it looks 
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
-  // Solution code here...
+  return Object.keys(obj).map(i => `${i}: ${obj[i]}`);
 };
 
 
@@ -116,7 +117,7 @@ const characters = [
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  arr.forEach(i => houses.push(i.house));
   return houses;
 };
 
@@ -130,11 +131,15 @@ This function should take in an array of data and a character name and return a 
 For example:
 hasChildrenValues(characters, 'Cersei') will return true
 hasChildrenValues(characters, 'Sansa') will return false
+
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
+  let results = false;
+  arr.find(name =>{ name === character && name.children !== null? results =true: results= false;
+  });
+  console.log(results);
+  return results;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -210,7 +215,7 @@ Run your tests from the console: jest challenges-06.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return the maximum number found', () => {
     expect(maxInArray([4, 2, 7, 5, 9, 2])).toStrictEqual(9);
   });
@@ -225,7 +230,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return true if the value is in the object', () => {
     expect(checkValues({ class: '301' }, '301')).toBe(true);
   });
@@ -235,7 +240,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return an an array of names and numbers', () => {
     const startingObj = {
       'Grace Hopper': '222-303-5938',
@@ -255,7 +260,7 @@ describe('Testing challenge 5', () => {
 });
 
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return true for characters that have children', () => {
     expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
   });

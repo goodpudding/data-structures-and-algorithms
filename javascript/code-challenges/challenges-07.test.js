@@ -46,10 +46,7 @@ Write a function named joinArray that takes an array and joins all of the elemen
 ------------------------------------------------------------------------------------------------ */
 
 const joinArray = (arr) => {
-  let joinArr = arr.split('');
-  console.log(joinArr);
-  joinArr.join('');
-  return joinArr;
+  return arr.join(' ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,7 +64,9 @@ For example, if the input is 'Welcome', the output will be:
 
 const howMuchPencil = (str) => {
   let result = [];
-  // Solution code here...
+  for( let i = 0; i<str.length+1; i++){
+    result.push(str.slice(i));
+  }
   return result;
 };
 
@@ -80,7 +79,8 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
 const wordsToCharList = (arr) => {
-  // Solution code here...
+
+  return arr.split('');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -125,13 +125,7 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  recipe.ingredients.forEach((ingredient) => {
-    let firstSpace = ingredient.indexOf(' ');
-    let withoutAmount = ingredient.slice(firstSpace + 1);
-    let secondSpace = withoutAmount.indexOf(' ');
-    let withoutUnits = withoutAmount.slice(secondSpace + 1);
-    result.push(withoutUnits);
-  });
+  // Solution code here...
   return result;
 };
 
@@ -277,17 +271,17 @@ describe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
-  test('It should return a list of shortening words', () => {
-    expect(howMuchPencil('Welcome')).toStrictEqual([
-      'Welcome',
-      'elcome',
-      'lcome',
-      'come',
-      'ome',
-      'me',
-      'e',
-      '',
+xdescribe("Testing challenge 4", () => {
+  test("It should return a list of shortening words", () => {
+    expect(howMuchPencil("Welcome")).toStrictEqual([
+      "Welcome",
+      "elcome",
+      "lcome",
+      "come",
+      "ome",
+      "me",
+      "e",
+      "",
     ]);
     expect(howMuchPencil('Welcome').length).toStrictEqual(8);
     expect(howMuchPencil('')).toStrictEqual(['']);
@@ -295,15 +289,15 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
-  test('It should return an array of individual letters', () => {
-    expect(wordsToCharList('Gregor')).toStrictEqual([
-      'G',
-      'r',
-      'e',
-      'g',
-      'o',
-      'r',
+xdescribe("Testing challenge 5", () => {
+  test("It should return an array of individual letters", () => {
+    expect(wordsToCharList("Gregor")).toStrictEqual([
+      "G",
+      "r",
+      "e",
+      "g",
+      "o",
+      "r",
     ]);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
     expect(wordsToCharList('hooray')).toStrictEqual([

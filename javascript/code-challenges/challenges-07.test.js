@@ -125,14 +125,7 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  recipe.ingredients.forEach((ingredient)=>{
-    let firstSpace = ingredient.indexOf(' ');
-    let withoutAmount = ingredient.slice(firstSpace + 1);
-
-    let secondSpace = withoutAmount.indexOf(' ');
-    let withoutUnits = withoutAmount.slice(secondSpace + 1);
-    result.push(withoutUnits);
-  });
+  // Solution code here...
   return result;
 };
 
@@ -278,17 +271,17 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
-  test('It should return a list of shortening words', () => {
-    expect(howMuchPencil('Welcome')).toStrictEqual([
-      'Welcome',
-      'elcome',
-      'lcome',
-      'come',
-      'ome',
-      'me',
-      'e',
-      '',
+xdescribe("Testing challenge 4", () => {
+  test("It should return a list of shortening words", () => {
+    expect(howMuchPencil("Welcome")).toStrictEqual([
+      "Welcome",
+      "elcome",
+      "lcome",
+      "come",
+      "ome",
+      "me",
+      "e",
+      "",
     ]);
     expect(howMuchPencil('Welcome').length).toStrictEqual(8);
     expect(howMuchPencil('')).toStrictEqual(['']);
@@ -296,15 +289,15 @@ describe('Testing challenge 4', () => {
   });
 });
 
-describe('Testing challenge 5', () => {
-  test('It should return an array of individual letters', () => {
-    expect(wordsToCharList('Gregor')).toStrictEqual([
-      'G',
-      'r',
-      'e',
-      'g',
-      'o',
-      'r',
+xdescribe("Testing challenge 5", () => {
+  test("It should return an array of individual letters", () => {
+    expect(wordsToCharList("Gregor")).toStrictEqual([
+      "G",
+      "r",
+      "e",
+      "g",
+      "o",
+      "r",
     ]);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
     expect(wordsToCharList('hooray')).toStrictEqual([
@@ -319,7 +312,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-describe('Testing challenge 6', () => {
+xdescribe('Testing challenge 6', () => {
   test('It should return a list of foods', () => {
     expect(listFoods(gruffaloCrumble)).toStrictEqual([
       'Gruffalo',

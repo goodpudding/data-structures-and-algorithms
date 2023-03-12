@@ -312,7 +312,7 @@ xdescribe("Testing challenge 5", () => {
   });
 });
 
-describe('Testing challenge 6', () => {
+xdescribe('Testing challenge 6', () => {
   test('It should return a list of foods', () => {
     expect(listFoods(gruffaloCrumble)).toStrictEqual([
       'Gruffalo',

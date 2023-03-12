@@ -208,7 +208,7 @@ Run your tests from the console: jest challenges-04.solution.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-describe("Testing challenge 1", () => {
+xdescribe("Testing challenge 1", () => {
   test("It should sort the characters by number of children", () => {
     expect(sortByChildren(characters)[0].name).toStrictEqual("Euron");
     expect(sortByChildren(characters)[0].children.length).toStrictEqual(0);

@@ -1,0 +1,3 @@
+# Created by newuser for 5.8.1
+export BREW_HOME="/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:$BREW_HOME"

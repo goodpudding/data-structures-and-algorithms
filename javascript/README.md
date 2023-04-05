@@ -5,6 +5,7 @@
 ## Table of Content:
 
 1. [Reverse Array](./array-reverse/README.md)
+2. [Array Insert-Shift](./array-insert-shift/README.md)
 
 ### Folder and Challenge Setup
 

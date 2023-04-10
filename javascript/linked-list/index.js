@@ -30,13 +30,7 @@ class LinkedList {
   }
   insert(value) {
     let node = new Node(value);
-    if(!this.head){
-      this.head = node;
-    } else {
-      let current = this.traverse();
-      console.log(current);
-      current.next = node;
-    }
+    this.head = node;
   }
   toString(){
     let current = this.head;
@@ -47,6 +41,22 @@ class LinkedList {
     }
     string = string.concat('NULL');
     return string;
+  }
+  append(value){
+    let node = new Node(value);
+    if(!this.head){
+      this.head = node;
+    } else {
+      let current = this.traverse();
+      console.log(current);
+      current.next = node;
+    }
+  }
+  insertBefore(){
+
+  }
+  insertAfter(){
+
   }
 
 }

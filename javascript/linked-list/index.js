@@ -79,6 +79,25 @@ class LinkedList {
       }
     }
   }
+  kthFromEnd(k) {
+    if(k<1){
+      return 'k must be a positive integer';
+    }
+    let first = this.head;
+    let second = this.head;
+    for (let i = 0; i < k; i++) {
+      if (second.next) {
+        second = second.next;
+      } else {
+        return 'k is greater than the length of the list';
+      }
+    }
+    while (second.next) {
+      first = first.next;
+      second = second.next;
+    }
+    return first.value;
+  }
 }
 // let linkedList = new LinkedList();
 // linkedList.head = new Node('knife');

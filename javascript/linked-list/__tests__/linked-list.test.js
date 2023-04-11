@@ -130,3 +130,49 @@ describe('Tesing for lab 6', () => {
 
   });
 });
+
+describe('Tesing for lab 7', () => {
+  test('Where k is greater than the length of the linked list', () => {
+    let newList = new LinkedList();
+    newList.insert(1);
+    newList.append(3);
+    newList.append(8);
+    newList.append(2);
+    expect(newList.kthFromEnd(5)).toEqual('k is greater than the length of the list');
+  });
+  test('Where k and the length of the list are the same', () => {
+    let newList = new LinkedList();
+    newList.insert(1);
+    newList.append(3);
+    newList.append(8);
+    newList.append(2);
+    expect(newList.kthFromEnd(4)).toEqual('k is greater than the length of the list');
+  });
+  test('Where k is not a positive integer', () => {
+    let newList = new LinkedList();
+    newList.insert(1);
+    newList.append(3);
+    newList.append(8);
+    newList.append(2);
+    expect(newList.kthFromEnd(-1)).toEqual('k must be a positive integer');
+  });
+  test('Where the linked list is of a size 1', () => {
+    let newList = new LinkedList();
+    newList.insert(1);
+    expect(newList.kthFromEnd(1)).toEqual('k is greater than the length of the list');
+  });
+  test('“Happy Path” where k is not at the end, but somewhere in the middle of the linked list', () => {
+    let newList = new LinkedList();
+    newList.insert(1);
+    newList.append(3);
+    newList.append(8);
+    newList.append(2);
+    newList.append(7);
+    expect(newList.kthFromEnd(2)).toEqual(8);
+  });
+
+
+
+
+
+});

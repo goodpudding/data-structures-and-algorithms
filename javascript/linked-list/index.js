@@ -73,15 +73,15 @@ class LinkedList {
     let current = this.head;
     while (current.value !== value) {
       current = current.next;
-      if(current.value === value){
+      if (current.value === value) {
         node.next = current.next;
         current.next = node;
       }
     }
   }
   kthFromEnd(k) {
-    if(k<1){
-      return 'k must be a positive integer';
+    if (k < 1) {
+      return "k must be a positive integer";
     }
     let first = this.head;
     let second = this.head;
@@ -89,7 +89,7 @@ class LinkedList {
       if (second.next) {
         second = second.next;
       } else {
-        return 'k is greater than the length of the list';
+        return "k is greater than the length of the list";
       }
     }
     while (second.next) {
@@ -97,6 +97,24 @@ class LinkedList {
       second = second.next;
     }
     return first.value;
+  }
+
+  linkedListZipped(list1, list2) {
+    let newList = new LinkedList();
+    newList.insert(list1.head.value);
+    list1.head = list1.head.next;
+    while (list1.head !== null || list2.head !== null) {
+      if(list2.head){
+        newList.append(list2.head.value);
+        list2.head = list2.head.next;
+      }
+      if(list1.head){
+        newList.append(list1.head.value);
+        list1.head = list1.head.next;
+      }
+    }
+    console.log(JSON.stringify(newList));
+    return newList;
   }
 }
 // let linkedList = new LinkedList();

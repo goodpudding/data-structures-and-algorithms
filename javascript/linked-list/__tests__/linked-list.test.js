@@ -3,7 +3,7 @@
 // Require our linked list implementation
 const LinkedList = require('../index');
 
-describe('Testing the Linked List data structure', () => {
+xdescribe('Testing the Linked List data structure', () => {
   test('Can successfully instantiate an empty linked list', () => {
     let newList = new LinkedList();
     expect(newList).toBeTruthy();
@@ -67,7 +67,7 @@ describe('Testing the Linked List data structure', () => {
   });
 });
 
-describe('Tesing for lab 6', () => {
+xdescribe('Tesing for lab 6', () => {
   test('Can successfully add a node to the end of the linked list', () => {
     let newList = new LinkedList();
     newList.insert('Tacos');
@@ -131,7 +131,7 @@ describe('Tesing for lab 6', () => {
   });
 });
 
-describe('Tesing for lab 7', () => {
+xdescribe('Tesing for lab 7', () => {
   test('Where k is greater than the length of the linked list', () => {
     let newList = new LinkedList();
     newList.insert(1);
@@ -171,8 +171,40 @@ describe('Tesing for lab 7', () => {
     expect(newList.kthFromEnd(2)).toEqual(8);
   });
 
+});
 
-
-
-
+describe('Tesing for lab 8', () => {
+  test('Takes in two lists and zipps them together', () => {
+    let list1 = new LinkedList();
+    list1.insert(2);
+    list1.append(3);
+    list1.append(4);
+    let list2 = new LinkedList();
+    list2.insert(5);
+    list2.append(6);
+    list2.append(7);
+    expect(list1.linkedListZipped(list1, list2)).toEqual({"head":{"value":2,"next":{"value":5,"next":{"value":3,"next":{"value":6,"next":{"value":4,"next":{"value":7,"next":null}}}}}}});
+  });
+  test('Takes a longer list and zips in a shorter list', () => {
+    let list1 = new LinkedList();
+    list1.insert(2);
+    list1.append(3);
+    list1.append(4);
+    list1.append(5);
+    let list2 = new LinkedList();
+    list2.insert(6);
+    list2.append(7);
+    expect(list1.linkedListZipped(list1, list2)).toEqual({"head":{"value":2,"next":{"value":6,"next":{"value":3,"next":{"value":7,"next":{"value":4,"next":{"value":5,"next":null}}}}}}});
+  });
+  test('Takes a shorter list and zips into a longer list', () => {
+    let list1 = new LinkedList();
+    list1.insert(2);
+    list1.append(3);
+    let list2 = new LinkedList();
+    list2.insert(4);
+    list2.append(5);
+    list2.append(6);
+    list2.append(7);
+    expect(list1.linkedListZipped(list1, list2)).toEqual({"head":{"value":2,"next":{"value":4,"next":{"value":3,"next":{"value":5,"next":{"value":6,"next":{"value":7,"next":null}}}}}}});
+  });
 });

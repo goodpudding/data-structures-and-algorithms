@@ -183,7 +183,7 @@ describe('Tesing for lab 8', () => {
     list2.insert(5);
     list2.append(6);
     list2.append(7);
-    expect(list1.linkedListZipped(list1, list2)).toEqual({"head":{"value":2,"next":{"value":5,"next":{"value":3,"next":{"value":6,"next":{"value":4,"next":{"value":7,"next":null}}}}}}});
+    expect(list1.linkedListZipped(list1, list2)).toEqual({'head':{'value':2,'next':{'value':5,'next':{'value':3,'next':{'value':6,'next':{'value':4,'next':{'value':7,'next':null}}}}}}});
   });
   test('Takes a longer list and zips in a shorter list', () => {
     let list1 = new LinkedList();
@@ -194,7 +194,7 @@ describe('Tesing for lab 8', () => {
     let list2 = new LinkedList();
     list2.insert(6);
     list2.append(7);
-    expect(list1.linkedListZipped(list1, list2)).toEqual({"head":{"value":2,"next":{"value":6,"next":{"value":3,"next":{"value":7,"next":{"value":4,"next":{"value":5,"next":null}}}}}}});
+    expect(list1.linkedListZipped(list1, list2)).toEqual({'head':{'value':2,'next':{'value':6,'next':{'value':3,'next':{'value':7,'next':{'value':4,'next':{'value':5,'next':null}}}}}}});
   });
   test('Takes a shorter list and zips into a longer list', () => {
     let list1 = new LinkedList();
@@ -205,6 +205,6 @@ describe('Tesing for lab 8', () => {
     list2.append(5);
     list2.append(6);
     list2.append(7);
-    expect(list1.linkedListZipped(list1, list2)).toEqual({"head":{"value":2,"next":{"value":4,"next":{"value":3,"next":{"value":5,"next":{"value":6,"next":{"value":7,"next":null}}}}}}});
+    expect(list1.linkedListZipped(list1, list2)).toEqual({'head':{'value':2,'next':{'value':4,'next':{'value':3,'next':{'value':5,'next':{'value':6,'next':{'value':7,'next':null}}}}}}});
   });
 });

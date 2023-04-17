@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 class Node {
   constructor(value) {
@@ -39,7 +39,7 @@ class LinkedList {
       current = current.next;
       string = string.concat(`{ ${current.value} } -> `);
     }
-    string = string.concat("NULL");
+    string = string.concat('NULL');
     return string;
   }
   append(value) {
@@ -81,7 +81,7 @@ class LinkedList {
   }
   kthFromEnd(k) {
     if (k < 1) {
-      return "k must be a positive integer";
+      return 'k must be a positive integer';
     }
     let first = this.head;
     let second = this.head;
@@ -89,7 +89,7 @@ class LinkedList {
       if (second.next) {
         second = second.next;
       } else {
-        return "k is greater than the length of the list";
+        return 'k is greater than the length of the list';
       }
     }
     while (second.next) {

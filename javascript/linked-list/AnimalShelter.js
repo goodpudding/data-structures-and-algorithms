@@ -49,7 +49,7 @@ class AnimalShelter {
   dequeue(pref) {
     if (pref === "cats") {
       if (this.cats === null) {
-        return null; // No more cats available
+        return null;
       } else {
         let adoptedCat = this.cats;
         this.cats = this.cats.next;
@@ -58,7 +58,7 @@ class AnimalShelter {
       }
     } else if (pref === "dogs") {
       if (this.dogs === null) {
-        return null; // No more dogs available
+        return null;
       } else {
         let adoptedDog = this.dogs;
         this.dogs = this.dogs.next;
@@ -66,7 +66,6 @@ class AnimalShelter {
         return adoptedDog;
       }
     } else {
-      // If no preference is specified, adopt a cat first, then a dog
       if (this.cats !== null) {
         let adoptedCat = this.cats;
         this.cats = this.cats.next;
@@ -78,7 +77,7 @@ class AnimalShelter {
         adoptedDog.next = null;
         return adoptedDog;
       } else {
-        return null; // No more pets available
+        return null;
       }
     }
   }

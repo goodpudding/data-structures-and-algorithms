@@ -22,20 +22,20 @@ class BinaryTree {
 
   order(node) {
     if (node.leftChild) {
-      this.preOrder(node.leftChild);
+      this.order(node.leftChild);
     }
     console.log(node.value);
     if (node.rightChild) {
-      this.preOrder(node.rightChild);
+      this.order(node.rightChild);
     }
   }
 
   postOrder(node) {
     if (node.leftChild) {
-      this.preOrder(node.leftChild);
+      this.postOrder(node.leftChild);
     }
     if (node.rightChild) {
-      this.preOrder(node.rightChild);
+      this.postOrder(node.rightChild);
     }
     console.log(node.value);
   }

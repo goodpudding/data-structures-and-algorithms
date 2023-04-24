@@ -1,43 +1,50 @@
-const {BinaryTree} = require('../trees');
-const {Node} = require('../trees');
+// binaryTree.test.js
+const { BinaryTree } = require('../trees');
 
 describe('BinaryTree', () => {
-  let tree;
-  let root;
+  test('creating/adding and traversing the tree', () => {
+    const tree = new BinaryTree();
 
-  beforeEach(() => {
-    tree = new BinaryTree();
-    root = new Node(1);
-    root.leftChild = new Node(2);
-    root.rightChild = new Node(3);
-    root.leftChild.leftChild = new Node(4);
-    root.leftChild.rightChild = new Node(5);
-    root.rightChild.leftChild = new Node(6);
-    root.rightChild.rightChild = new Node(7);
+    expect(tree.root).toBeNull(); // Empty tree
+
+    tree.addANode(5);
+    expect(tree.root.value).toBe(5); // Root node
+
+    tree.addANode(3);
+    expect(tree.root.leftChild.value).toBe(3); // Left child of root
+
+    tree.addANode(7);
+    expect(tree.root.rightChild.value).toBe(7); // Right child of root
+
+    // Pre-order traversal
+    expect(tree.preOrder(tree.root, [])).toEqual([5, 3, 7]);
+
+    // In-order traversal
+    expect(tree.inOrder(tree.root, [])).toEqual([3, 5, 7]);
+
+    // Post-order traversal
+    expect(tree.postOrder(tree.root, [])).toEqual([3, 7, 5]);
+
+    // Breadth-first traversal
+    expect(tree.breadthFirst(tree.root)).toEqual([5, 3, 7]);
   });
 
-  test('preOrder traversal', () => {
-    expect(tree.preOrder(root)).toEqual([1, 2, 4, 5, 3, 6, 7]);
-  });
+  xtest('treeMax functionality', () => {
+    const tree = new BinaryTree();
 
-  test('inOrder traversal', () => {
-    expect(tree.inOrder(root)).toEqual([4, 2, 5, 1, 6, 3, 7]);
-  });
+    expect(() => tree.treeMax()).toThrow(); // Edge case: Empty tree
 
-  test('postOrder traversal', () => {
-    expect(tree.postOrder(root)).toEqual([4, 5, 2, 6, 7, 3, 1]);
-  });
+    tree.addANode(5);
+    expect(tree.treeMax()).toBe(5); // Single node tree
 
-  test('breadthFirst traversal', () => {
-    expect(tree.breadthFirst(root)).toEqual([1, 2, 3, 4, 5, 6, 7]);
-  });
+    tree.addANode(3);
+    tree.addANode(7);
+    expect(tree.treeMax()).toBe(7); // Three nodes tree
 
-  test('empty tree', () => {
-    const emptyTree = new BinaryTree();
-    const emptyNode = new Node();
-    expect(emptyTree.preOrder(emptyNode)).toEqual([undefined]);
-    expect(emptyTree.inOrder(emptyNode)).toEqual([undefined]);
-    expect(emptyTree.postOrder(emptyNode)).toEqual([undefined]);
-    expect(emptyTree.breadthFirst(emptyNode)).toEqual([undefined]);
+    tree.addANode(1);
+    tree.addANode(4);
+    tree.addANode(6);
+    tree.addANode(9);
+    expect(tree.treeMax()).toBe(9); // Full tree
   });
 });

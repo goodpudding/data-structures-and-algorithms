@@ -3,50 +3,91 @@
 const Queue = require('../linked-list/Queue');
 
 class Node {
-  constructor() {
+  constructor(value) {
+    this.value = value;
     this.leftChild = null;
     this.rightChild = null;
   }
 }
 
 class BinaryTree {
-  preOrder(node) {
-    console.log(node.value);
-    if (node.leftChild) {
-      this.preOrder(node.leftChild);
-    }
-    if (node.rightChild) {
-      this.preOrder(node.rightChild);
+  constructor() {
+    this.root = null;
+  }
+
+  addANode(value) {
+    const node = new Node(value);
+    if (this.root === null) {
+      this.root = node;
+    } else {
+      const emptyNode = this.findEmpty(this.root);
+      if (emptyNode.leftChild === null) {
+        emptyNode.leftChild = node;
+      } else {
+        emptyNode.rightChild = node;
+      }
     }
   }
 
-  order(node) {
-    if (node.leftChild) {
-      this.order(node.leftChild);
-    }
-    console.log(node.value);
-    if (node.rightChild) {
-      this.order(node.rightChild);
+  findEmpty(node) {
+    const queue = [];
+    queue.push(node);
+
+    while (queue.length) {
+      const currentNode = queue.shift();
+      if (currentNode.leftChild === null || currentNode.rightChild === null) {
+        return currentNode;
+      }
+      queue.push(currentNode.leftChild);
+      queue.push(currentNode.rightChild);
     }
   }
 
-  postOrder(node) {
+  preOrder(node, arr) {
+    console.log('NODE VALUE', arr);
+    let value = node.value;
+    if (node.value) {
+      arr.push(value);
+    }
+    if (node.leftChild !== null) {
+      this.preOrder(node.leftChild, arr);
+    }
+    if (node.rightChild !== null) {
+      this.preOrder(node.rightChild, arr);
+    }
+    return arr;
+  }
+
+  inOrder(node, arr) {
+    console.log('NODE', node.value);
     if (node.leftChild) {
-      this.postOrder(node.leftChild);
+      this.inOrder(node.leftChild, arr);
+    }
+    arr.push(node.value);
+    if (node.rightChild) {
+      this.inOrder(node.rightChild, arr);
+    }
+    return arr;
+  }
+
+  postOrder(node, arr) {
+    if (node.leftChild) {
+      this.postOrder(node.leftChild, arr);
     }
     if (node.rightChild) {
-      this.postOrder(node.rightChild);
+      this.postOrder(node.rightChild, arr);
     }
-    console.log(node.value);
+    arr.push(node.value);
+    return arr;
   }
 
   breadthFirst(node) {
     let visited = new Queue();
+    let arr = [];
     visited.enqueue(node);
-
-    while (visited.peek()) {
+    while (!visited.isEmpty()) {
       let current = visited.dequeue();
-      console.log(current.value);
+      arr.push(current.value);
       if (current.leftChild) {
         visited.enqueue(current.leftChild);
       }
@@ -54,10 +95,35 @@ class BinaryTree {
         visited.enqueue(current.rightChild);
       }
     }
+    return arr;
+  }
+
+  //   breadthFirstKary(node) {
+  //     let visited = new Queue();
+  //     visited.enqueue(node);
+  //     while (!visited.isEmpty()) {
+  //       let current = visited.dequeue();
+  //       if (current.children) {
+  //         for (let i = 0; i < current.children.length; i++) {
+  //           visited.enqueue(current.children[i]);
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+  treeMax() {
+    let max = 0;
+    this.inOrder(this.root).forEach((idx) => {
+      if (idx > max) {
+        max = idx;
+      }
+    });
+    return max;
   }
 }
 
 module.exports = {
   BinaryTree,
-  Node
+  Node,
 };

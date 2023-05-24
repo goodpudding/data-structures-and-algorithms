@@ -1,4 +1,4 @@
-  function insert(sorted, value) {
+function insert(sorted, value) {
   let i = 0;
   while (value > sorted[i]) {
     i++;

@@ -51,6 +51,23 @@ class Graph {
 
     return Array.from(visited);
   }
+  depthFirst(startNode, visited = new Set()) {
+    if (!this.adjacencyList.has(startNode)) {
+      throw new Error("Start node not in graph");
+    }
+
+    visited.add(startNode);
+
+    const neighbors = this.getNeighbors(startNode);
+    for (const neighbor of neighbors) {
+      if (!visited.has(neighbor.node)) {
+        this.depthFirst(neighbor.node, visited);
+      }
+    }
+
+    return Array.from(visited);
+  }
+
 }
 
 module.exports = Graph;

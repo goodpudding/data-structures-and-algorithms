@@ -1,20 +1,7 @@
 function sortByYear(movies) {
-  const sortedMovies = [];
-  movies.forEach(movie => {
-    let inserted = false;
-    for (let i = 0; i < sortedMovies.length; i++) {
-      if (movie.year > sortedMovies[i].year) {
-        sortedMovies.splice(i, 0, movie);
-        inserted = true;
-        break;
-      }
-    }
-    if (!inserted) {
-      sortedMovies.push(movie);
-    }
-  });
-  return sortedMovies;
+  return movies.slice().sort((a, b) => a.year - b.year);
 }
+
 
 function sortAlphabetically(movies) {
   const sortedTitles = [];
